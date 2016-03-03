@@ -1,20 +1,18 @@
 package com.thoughtworks.biblioteca;
 
 import java.io.PrintStream;
-import java.util.List;
-import java.util.Scanner;
 
 public class Biblioteca {
 
     private UserScanner scanner;
     private PrintStream printStream;
-    private List<Book> listOfBooks;
+    private Library library;
 
 
-    public Biblioteca(PrintStream printStream, List<Book> listOfBooks, UserScanner scanner) {
+    public Biblioteca(PrintStream printStream, UserScanner scanner, Library library) {
         this.printStream = printStream;
-        this.listOfBooks = listOfBooks;
-        this.scanner = scanner ;
+        this.scanner = scanner;
+        this.library = library;
     }
 
     public void run() {
@@ -26,14 +24,6 @@ public class Biblioteca {
     public void greetCustomer() {
         printStream.println("Welcome");
     }
-
-    public void listBooks() {
-        for (Book book: listOfBooks){
-            book.print();
-        }
-    }
-
-
 
     private void showmenu() {
         printStream.println("1. List Books") ;
@@ -49,7 +39,7 @@ public class Biblioteca {
     public void response(int userInput) {
         switch (userInput) {
             case 1:
-                listBooks() ;
+                library.listBooks() ;
                 break ;
             case 2:
                 printStream.println("Thank you for using the Biblioteca..?");
