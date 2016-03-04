@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
+import java.util.InputMismatchException;
 
 import static org.mockito.Mockito.*;
 
@@ -33,6 +34,13 @@ public class MenuTest {
     @Test
     public void shouldGiveErrorMessageWhenUserEntersInvalidInput(){
         when(scanner.nextInt()).thenReturn(10000);
+        menu.display();
+        verify(printStream).println("Select a valid option!");
+    }
+
+    @Test
+    public void shouldGiveErrorMessageWhenUserEntersNonNumericInput() {
+        when(scanner.nextInt()).thenThrow(InputMismatchException.class);
         menu.display();
         verify(printStream).println("Select a valid option!");
     }

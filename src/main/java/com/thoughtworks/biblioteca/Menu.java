@@ -1,6 +1,7 @@
 package com.thoughtworks.biblioteca;
 
 import java.io.PrintStream;
+import java.util.InputMismatchException;
 
 public class Menu {
     private PrintStream printStream;
@@ -18,7 +19,11 @@ public class Menu {
     }
 
     public void chooseOptionFromUserInput() {
-        int input = scanner.nextInt();
+        int input = 0;
+        try {
+            input = scanner.nextInt();
+        } catch (InputMismatchException e) { }
+
         switch (input) {
             case 1:
                 library.listBooks() ;
