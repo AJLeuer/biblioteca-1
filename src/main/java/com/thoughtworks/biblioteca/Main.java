@@ -8,8 +8,8 @@ import java.io.PrintStream;
 public class Main {
     public static void main(String[] args) throws IOException {
         PrintStream printStream = System.out;
-        UserScanner scanner = new UserScanner(new BufferedReader(new InputStreamReader(System.in))) ;
         Library library = new Library();
+        UserScanner scanner = new UserScanner(new BufferedReader(new InputStreamReader(System.in)), library, printStream) ;
         library.addBook(new Book(printStream,"Title", "Author", 2000));
         Menu menu = new Menu(printStream, scanner, library);
 
