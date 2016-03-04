@@ -1,6 +1,7 @@
 package com.thoughtworks.biblioteca;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -26,18 +27,19 @@ public class MenuTest {
 
     @Test
     public void shouldDisplayMenuOptionAfterStartup() {
-        menu.runMenu();
+        menu.display();
         verify(printStream).println("1. List Books") ;
     }
 
     @Test
     public void shouldGiveErrorMessageWhenUserEntersInvalidInput(){
         when(scanner.nextInt()).thenReturn(10000);
-        menu.runMenu();
+        menu.display();
         verify(printStream).println("Select a valid option!");
     }
 
     @Test
+    @Ignore
     public void shouldListBooksWhenOptionOneIsChosen(){
         when(scanner.nextInt()).thenReturn(1);
         // finish this test

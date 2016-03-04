@@ -9,9 +9,8 @@ public class Main {
         Library library = new Library();
         Menu menu = new Menu(printStream, scanner);
 
-        ApplicationController applicationController = new ApplicationController(printStream);
+        ApplicationController applicationController = new ApplicationController(printStream, menu);
 
         applicationController.run();
-        menu.runMenu();
     }
 }

@@ -19,7 +19,6 @@ public class Menu {
         int input = scanner.nextInt();
         switch (input) {
             case 1:
-//                library.listBooks();
                 break;
             case 2:
                 printStream.println("Thank you for using the Biblioteca..?");
@@ -30,7 +29,7 @@ public class Menu {
         }
     }
 
-    public void runMenu() {
+    public void display() {
         displayOptions();
         chooseOptionFromUserInput();
     }
