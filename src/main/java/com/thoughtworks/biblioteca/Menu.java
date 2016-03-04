@@ -5,10 +5,12 @@ import java.io.PrintStream;
 public class Menu {
     private PrintStream printStream;
     private UserScanner scanner;
+    private Library library;
 
-    public Menu(PrintStream printStream, UserScanner scanner) {
+    public Menu(PrintStream printStream, UserScanner scanner, Library library) {
         this.printStream = printStream;
         this.scanner = scanner;
+        this.library = library;
     }
 
     public void displayOptions() {
@@ -19,6 +21,7 @@ public class Menu {
         int input = scanner.nextInt();
         switch (input) {
             case 1:
+                library.listBooks() ;
                 break;
             case 2:
                 printStream.println("Thank you for using the Biblioteca..?");

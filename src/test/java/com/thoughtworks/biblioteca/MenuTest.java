@@ -1,26 +1,25 @@
 package com.thoughtworks.biblioteca;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.PrintStream;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class MenuTest {
 
     private PrintStream printStream;
     private Menu menu;
     private UserScanner scanner;
+    private Library library;
 
     @Before
     public void setUp(){
         scanner = mock(UserScanner.class);
         printStream = mock(PrintStream.class);
-        menu = new Menu(printStream, scanner);
+        library = mock(Library.class) ;
+        menu = new Menu(printStream, scanner, library);
         when(scanner.nextInt()).thenReturn(1000000);
 
     }
@@ -39,10 +38,11 @@ public class MenuTest {
     }
 
     @Test
-    @Ignore
     public void shouldListBooksWhenOptionOneIsChosen(){
         when(scanner.nextInt()).thenReturn(1);
-        // finish this test
+        menu.display();
+
+        verify(library).listBooks();
     }
 
 }

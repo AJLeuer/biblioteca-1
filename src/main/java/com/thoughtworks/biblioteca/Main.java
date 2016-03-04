@@ -7,7 +7,8 @@ public class Main {
         PrintStream printStream = System.out;
         UserScanner scanner = new UserScanner() ;
         Library library = new Library();
-        Menu menu = new Menu(printStream, scanner);
+        library.addBook(new Book(printStream,"Title", "Author", 2000));
+        Menu menu = new Menu(printStream, scanner, library);
 
         ApplicationController applicationController = new ApplicationController(printStream, menu);
 
