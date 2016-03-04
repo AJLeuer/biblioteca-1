@@ -20,22 +20,7 @@ public class Menu {
     }
 
     public void chooseOptionFromUserInput() throws IOException {
-        int input = 0;
-        try {
-            input = scanner.nextInt();
-        } catch (InputMismatchException e) { }
-
-        switch (input) {
-            case 1:
-                library.listBooks() ;
-                break;
-            case 2:
-                printStream.println("Thank you for using the Biblioteca..?");
-                break;
-            default:
-                printStream.println("Select a valid option!");
-                break;
-        }
+        scanner.getUserCommand().execute() ;
     }
 
     public void display() throws IOException {

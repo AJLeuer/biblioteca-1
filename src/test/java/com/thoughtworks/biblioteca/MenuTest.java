@@ -28,30 +28,17 @@ public class MenuTest {
 
     @Test
     public void shouldDisplayMenuOptionAfterStartup() throws IOException {
-        menu.display();
+        menu.displayOptions();
         verify(printStream).println("1. List Books") ;
     }
 
     @Test
-    public void shouldGiveErrorMessageWhenUserEntersInvalidInput() throws IOException {
-        when(scanner.nextInt()).thenReturn(10000);
-        menu.display();
-        verify(printStream).println("Select a valid option!");
-    }
+    public void shouldExecuteCommandFromScanner() throws IOException {
+        Command command = mock(Command.class) ;
+        when(scanner.getUserCommand()).thenReturn(command) ;
 
-    @Test
-    public void shouldGiveErrorMessageWhenUserEntersNonNumericInput() throws IOException {
-        when(scanner.nextInt()).thenThrow(InputMismatchException.class);
-        menu.display();
-        verify(printStream).println("Select a valid option!");
-    }
-
-    @Test
-    public void shouldListBooksWhenOptionOneIsChosen() throws IOException {
-        when(scanner.nextInt()).thenReturn(1);
-        menu.display();
-
-        verify(library).listBooks();
+        menu.chooseOptionFromUserInput();
+        verify(command).execute() ;
     }
 
 }
