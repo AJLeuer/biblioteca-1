@@ -1,5 +1,6 @@
 package com.thoughtworks.biblioteca;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.InputMismatchException;
 
@@ -18,7 +19,7 @@ public class Menu {
         printStream.println("1. List Books");
     }
 
-    public void chooseOptionFromUserInput() {
+    public void chooseOptionFromUserInput() throws IOException {
         int input = 0;
         try {
             input = scanner.nextInt();
@@ -37,7 +38,7 @@ public class Menu {
         }
     }
 
-    public void display() {
+    public void display() throws IOException {
         displayOptions();
         chooseOptionFromUserInput();
     }

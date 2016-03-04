@@ -3,6 +3,7 @@ package com.thoughtworks.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class ApplicationControllerTest {
     }
 
     @Test
-    public void shouldDisplayMenuAfterGreetingCustomer() {
+    public void shouldDisplayMenuAfterGreetingCustomer() throws IOException {
         applicationController.run();
 
         verify(menu).display();

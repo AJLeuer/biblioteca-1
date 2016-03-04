@@ -1,5 +1,6 @@
 package com.thoughtworks.biblioteca;
 
+import java.io.IOException;
 import java.io.PrintStream;
 
 public class ApplicationController {
@@ -13,7 +14,7 @@ public class ApplicationController {
         this.menu = menu;
     }
 
-    public void run() {
+    public void run() throws IOException {
         greetCustomer() ;
         menu.display();
     }
